@@ -1,4 +1,12 @@
 import { useState } from 'react'
+import "./constants";
+import {
+    COGNITO_IDENTITY_POOL_ID,
+    COGNITO_REGION,
+    USER_POOL_CLIENT_ID,
+    USER_POOL_ID
+} from "./constants";
+import signIn from './login'
 import loginImage from './assets/login.png'
 import logoutImage from './assets/logout.png'
 import './App.css'
@@ -17,7 +25,7 @@ function App() {
             </div>
             <h1>Vite + React + TS + TailwindCSS</h1>
             <div className="card">
-                <button onClick={() => changeLogin((isLoggedIn) => !isLoggedIn)}>
+                <button onClick={signIn}>
                     {isLoggedIn ? 'Logout' : 'Login'}
                 </button>
             </div>

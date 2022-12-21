@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "autoprefixer": "^10.4.13",
+    "aws-amplify": "^5.0.7",
     "postcss": "^8.4.20",
     "postcss-import": "^15.1.0",
     "prettier": "^2.8.1",
