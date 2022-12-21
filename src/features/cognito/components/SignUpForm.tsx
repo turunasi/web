@@ -2,9 +2,8 @@ import { useState } from 'react'
 import { Auth, Hub } from 'aws-amplify'
 
 export const SignUpForm = () => {
-
-    const [message, setMessage] = useState("");
-    const [isResendFormShown, showResendForm] = useState(false);
+    const [message, setMessage] = useState('')
+    const [isResendFormShown, showResendForm] = useState(false)
     const [formValues, setFormValues] = useState({
         email: '',
         password: '',
@@ -34,13 +33,13 @@ export const SignUpForm = () => {
                 password: formValues.password,
                 attributes: {
                     email: formValues.email
-                },
+                }
                 // autoSignIn: {
                 //     enabled: true
                 // }
             })
             console.log(user)
-            setMessage("User created successfully!")
+            setMessage('User created successfully!')
             showResendForm(true)
         } catch (error) {
             console.log('error signing up:', error)
@@ -50,8 +49,8 @@ export const SignUpForm = () => {
     const confirmSignUp = async (e: React.FormEvent<HTMLFormElement>) => {
         try {
             e.preventDefault()
-            await Auth.confirmSignUp(formValues.email, formValues.code);
-            setMessage("Confirmation code resent successfully!")
+            await Auth.confirmSignUp(formValues.email, formValues.code)
+            setMessage('Confirmation code resent successfully!')
         } catch (error) {
             console.log('error resending code: ', error)
             showResendForm(false)
@@ -103,7 +102,7 @@ export const SignUpForm = () => {
                         <button className="hover:bg-white">Confirm Code</button>
                     </div>
                 </form>
-            ): null}
+            ) : null}
         </>
     )
 }

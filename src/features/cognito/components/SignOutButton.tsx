@@ -9,7 +9,5 @@ const signOut = async () => {
 }
 
 export const SignOutButton = () => {
-    return (
-        <button onClick={signOut}>Sign Out</button>
-    )
+    return <button onClick={signOut}>Sign Out</button>
 }
