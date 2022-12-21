@@ -3,7 +3,6 @@ import { Auth } from 'aws-amplify'
 
 export const SignInForm = () => {
     const [formValues, setFormValues] = useState({
-        username: '',
         email: '',
         password: ''
     })
@@ -25,14 +24,6 @@ export const SignInForm = () => {
 
     return (
         <form onSubmit={signIn} action="">
-            <input
-                className="my-2"
-                type="username"
-                name="username"
-                placeholder="John Doe"
-                value={formValues.username}
-                onChange={handleValues('username')}
-            />
             <input
                 className="my-2"
                 type="email"

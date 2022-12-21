@@ -12,16 +12,6 @@ Amplify.configure(AmplifyConfig)
 
 function App() {
     const [isLoggedIn, changeLogin] = useState(false)
-    const [formValues, setFormValues] = useState({
-        username: '',
-        email: '',
-        password: ''
-    })
-
-    const handleValues = (name: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
-        const newValues = { ...formValues, [name]: event.target.value }
-        setFormValues(newValues)
-    }
 
     return (
         <div className="App">
