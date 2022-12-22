@@ -9,5 +9,9 @@ const signOut = async () => {
 }
 
 export const SignOutButton = () => {
-    return <button onClick={signOut}>Sign Out</button>
+    return (
+        <button className="bg-blue-500 hover:bg-blue-600" onClick={signOut}>
+            Sign Out
+        </button>
+    )
 }

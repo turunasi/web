@@ -59,9 +59,9 @@ export const SignUpForm = () => {
 
     return (
         <>
-            <form onSubmit={signUp} action="">
+            <form onSubmit={signUp} action="" className="flex flex-col">
                 <input
-                    className="my-2"
+                    className="my-2 rounded-lg text-slate-700"
                     type="email"
                     name="email"
                     placeholder="Email"
@@ -69,7 +69,7 @@ export const SignUpForm = () => {
                     onChange={handleValues('email')}
                 />
                 <input
-                    className="my-2"
+                    className="my-2 rounded-lg text-slate-700"
                     type="password"
                     name="password"
                     placeholder="Password"
@@ -77,13 +77,13 @@ export const SignUpForm = () => {
                     onChange={handleValues('password')}
                 />
                 <div>
-                    <button className="hover:bg-white">Sign Up</button>
+                    <button className="bg-orange-500 hover:bg-orange-600">Sign Up</button>
                 </div>
             </form>
             {isResendFormShown ? (
-                <form onSubmit={confirmSignUp} action="">
+                <form onSubmit={confirmSignUp} action="" className="flex flex-col">
                     <input
-                        className="my-2"
+                        className="my-2 rounded-lg text-slate-700"
                         type="email"
                         name="email"
                         placeholder="Email"
@@ -91,7 +91,7 @@ export const SignUpForm = () => {
                         onChange={handleValues('email')}
                     />
                     <input
-                        className="my-2"
+                        className="my-2 rounded-lg text-slate-700"
                         type="code"
                         name="code"
                         placeholder="code"

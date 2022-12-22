@@ -23,9 +23,9 @@ export const SignInForm = () => {
     }
 
     return (
-        <form onSubmit={signIn} action="">
+        <form onSubmit={signIn} action="" className="flex flex-col">
             <input
-                className="my-2"
+                className="my-2 rounded-lg text-slate-700"
                 type="email"
                 name="email"
                 placeholder="Email"
@@ -33,7 +33,7 @@ export const SignInForm = () => {
                 onChange={handleValues('email')}
             />
             <input
-                className="my-2"
+                className="my-2 rounded-lg text-slate-700"
                 type="password"
                 name="password"
                 placeholder="Password"
@@ -41,7 +41,7 @@ export const SignInForm = () => {
                 onChange={handleValues('password')}
             />
             <div>
-                <button className="hover:bg-white">Sign In</button>
+                <button className="bg-green-500 hover:bg-green-600">Sign In</button>
             </div>
         </form>
     )

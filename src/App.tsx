@@ -23,14 +23,14 @@ function App() {
                 )}
             </div>
             <h1>Vite + React + TS + TailwindCSS</h1>
-            <div className="flex justify-evenly">
-                <div className="card">
+            <div className="flex justify-between">
+                <div className="w-56">
                     <SignUpForm />
                 </div>
-                <div className="card">
+                <div className="w-56">
                     <SignInForm />
                 </div>
-                <div className="card">
+                <div className="w-56">
                     <SignOutButton />
                 </div>
             </div>
