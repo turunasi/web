@@ -3,6 +3,7 @@ import { Auth, Hub } from 'aws-amplify'
 
 export const SignUpForm = () => {
     const [message, setMessage] = useState('')
+    const [errorMessage, setErrorMessage] = useState('')
     const [isResendFormShown, showResendForm] = useState(false)
     const [formValues, setFormValues] = useState({
         email: '',
@@ -14,16 +15,6 @@ export const SignUpForm = () => {
         const newValues = { ...formValues, [name]: event.target.value }
         setFormValues(newValues)
     }
-
-    // Hub.listen('auth', ({ payload }) => {
-    //     const { event } = payload;
-    //     if (event === 'autoSignIn') {
-    //         const user = payload.data;
-    //         console.log(user)
-    //     } else if (event === 'autoSignIn_failure') {
-    //         // redirect to sign in page
-    //     }
-    // })
 
     const signUp = async (e: React.FormEvent<HTMLFormElement>) => {
         try {
@@ -39,10 +30,13 @@ export const SignUpForm = () => {
                 // }
             })
             console.log(user)
-            setMessage('User created successfully!')
+            setErrorMessage('')
+            setMessage('Created user successfully!')
             showResendForm(true)
-        } catch (error) {
+        } catch (error: any) {
             console.log('error signing up:', error)
+            setMessage('')
+            setErrorMessage(error.message)
         }
     }
 
@@ -50,15 +44,18 @@ export const SignUpForm = () => {
         try {
             e.preventDefault()
             await Auth.confirmSignUp(formValues.email, formValues.code)
-            setMessage('Confirmation code resent successfully!')
-        } catch (error) {
-            console.log('error resending code: ', error)
+            setMessage('Confirmed code successfully!')
+        } catch (error: any) {
+            console.log('error code: ', error)
+            setErrorMessage(error.message)
             showResendForm(false)
         }
     }
 
     return (
         <>
+            {errorMessage ? <p className="underline decoration-red-600">{errorMessage}</p> : null}
+            {message ? <p className="underline decoration-green-600">{message}</p> : null}
             <form onSubmit={signUp} action="" className="flex flex-col">
                 <input
                     className="my-2 rounded-lg text-slate-700"
@@ -92,7 +89,7 @@ export const SignUpForm = () => {
                     />
                     <input
                         className="my-2 rounded-lg text-slate-700"
-                        type="code"
+                        type="text"
                         name="code"
                         placeholder="code"
                         value={formValues.code}
